@@ -1,1 +1,173 @@
 @import "tailwindcss";
+
+/* @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap"); */
+
+/* Tailwind v4 projects normally use: @import "tailwindcss"; */
+/* Tailwind v3 projects normally use @tailwind base/components/utilities. */
+
+:root {
+ font-family: "Montserrat", sans-serif;
+ color: #4f2930;
+ background: #fffaf0;
+}
+
+html {
+ scroll-behavior: smooth;
+ background: #fffaf0;
+}
+
+body {
+ margin: 0;
+ min-width: 320px;
+ overflow-x: hidden;
+ background: #fffaf0;
+}
+
+* {
+ box-sizing: border-box;
+}
+
+button,
+input,
+select,
+textarea {
+ font: inherit;
+}
+
+.font-display {
+ font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.section-kicker {
+ font-size: 0.7rem;
+ font-weight: 700;
+ letter-spacing: 0.22em;
+ text-transform: uppercase;
+ color: #9a7436;
+}
+
+.section-title {
+ margin-top: 0.75rem;
+ font-family: "Cormorant Garamond", Georgia, serif;
+ font-size: clamp(2.5rem, 6vw, 4.25rem);
+ line-height: 1;
+ color: #70192d;
+}
+
+.ornament {
+ display: inline-block;
+ margin-top: 1rem;
+ font-size: 2rem;
+ color: #c5a052;
+}
+
+.form-label {
+ display: block;
+ margin-bottom: 0.5rem;
+ font-size: 0.7rem;
+ font-weight: 700;
+ letter-spacing: 0.14em;
+ text-transform: uppercase;
+ color: #7a2335;
+}
+
+.form-input {
+ width: 100%;
+ border: 1px solid #d7be85;
+ border-radius: 0;
+ background: #fffaf0;
+ padding: 0.85rem 0.95rem;
+ color: #5e3035;
+ outline: none;
+ transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.form-input:focus {
+ border-color: #741b30;
+ box-shadow: 0 0 0 3px rgba(116, 27, 48, 0.12);
+}
+
+.wedding-petal {
+ position: absolute;
+ top: -10%;
+ display: block;
+ border-radius: 70% 0 70% 0;
+ background: rgba(151, 40, 67, 0.27);
+ box-shadow: 0 0 8px rgba(204, 159, 98, 0.15);
+ animation-name: falling-petal;
+ animation-timing-function: linear;
+ animation-iteration-count: infinite;
+}
+
+.animate-invitation {
+ animation: invitation-reveal 750ms ease-out both;
+}
+
+@keyframes invitation-reveal {
+ from {
+ opacity: 0;
+ transform: scale(0.985);
+ }
+
+ to {
+ opacity: 1;
+ transform: scale(1);
+ }
+}
+
+@keyframes falling-petal {
+ 0% {
+ opacity: 0;
+ transform: translate3d(0, -5vh, 0) rotate(0deg);
+ }
+
+ 10% {
+ opacity: 0.65;
+ }
+
+ 100% {
+ opacity: 0;
+ transform: translate3d(70px, 110vh, 0) rotate(320deg);
+ }
+}
+
+@media (prefers-reduced-motion: reduce) {
+ html {
+ scroll-behavior: auto;
+ }
+
+ *,
+ *::before,
+ *::after {
+ animation-duration: 0.01ms !important;
+ animation-iteration-count: 1 !important;
+ transition-duration: 0.01ms !important;
+ }
+
+.wedding-petal {
+ display: none;
+ }
+}
+
+/* ---------------------------------- */
+
+@keyframes float-soft {
+ 0%, 100% { transform: translateY(0px); }
+ 50% { transform: translateY(-8px); }
+}
+
+@keyframes drift-left {
+ 0% { transform: translateX(0) rotate(0deg); }
+ 50% { transform: translateX(-10px) rotate(-1deg); }
+ 100% { transform: translateX(0) rotate(0deg); }
+}
+
+.motion-float {
+ animation: float-soft 4s ease-in-out infinite;
+}
+
+.motion-drift {
+ animation: drift-left 6s ease-in-out infinite;
+}
+
+

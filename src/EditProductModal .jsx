@@ -86,7 +86,7 @@ console.log(preview)
       }
 
       await api.put(
-        `/Login/update-product/${editProduct.productId}`,
+        `/Product/update-product/${editProduct.productId}`,
         formData
       );
 

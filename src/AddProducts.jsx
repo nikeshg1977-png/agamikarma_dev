@@ -66,7 +66,7 @@ const Dashboard = () => {
 
     try {
       const response = await api.post(
-        "/Login/add-product",
+        "/Product/add-product",
         formData,
         {
           headers: {
@@ -183,6 +183,7 @@ const Dashboard = () => {
                   <option>Shirt</option>
                   <option>T-Shirt</option>
                   <option>Jeans</option>
+                  <option>Dress</option>
                 </select>
               </div>
 

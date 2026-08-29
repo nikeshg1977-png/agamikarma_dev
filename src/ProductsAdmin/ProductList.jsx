@@ -1,15 +1,69 @@
 import React, { useEffect, useState } from "react";
-// import api from "./api/axios";
 import EditCalendarTwoToneIcon from '@mui/icons-material/EditCalendarTwoTone';
-import EditProductModal from "./EditProductModal ";
-import api from "./api/axios";
+// import EditProductModal from "./EditProductModal";
+import api from "../api/axios";
+import { toast } from "react-toastify";
+import ProductFilter from "./ProductFilter";
+import EditProductModal from "../EditProductModal ";
+
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [open, setOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
+    const [filter, setFilter] = useState({
+        clothName: "",
+        clothType: "",
+        brandName: "",
+        gender: "",
+        minPrice: "",
+        maxPrice: "",
+        status: "",
+    });
 
+    const filteredProducts = products.filter((item) => {
+
+        const clothName =
+            item.clothName
+                .toLowerCase()
+                .includes(filter.clothName.toLowerCase());
+
+        const clothType =
+            filter.clothType === "" ||
+            item.clothType === filter.clothType;
+
+        const brand =
+            item.brandName
+                .toLowerCase()
+                .includes(filter.brandName.toLowerCase());
+
+        const gender =
+            filter.gender === "" ||
+            item.gender === filter.gender;
+
+        const status =
+            filter.status === "" ||
+            item.status.toString() === filter.status;
+
+        const minPrice =
+            filter.minPrice === "" ||
+            item.price >= Number(filter.minPrice);
+
+        const maxPrice =
+            filter.maxPrice === "" ||
+            item.price <= Number(filter.maxPrice);
+
+        return (
+            clothName &&
+            clothType &&
+            brand &&
+            gender &&
+            status &&
+            minPrice &&
+            maxPrice
+        );
+    });
     const handleEdit = (product) => {
         setSelectedProduct(product);
         // alert(`Editing product: ${product.clothName}`);
@@ -18,7 +72,7 @@ const ProductList = () => {
 
     const getProducts = async () => {
         try {
-            const response = await api.get("/Login/get-products");
+            const response = await api.get("/Product/get-products");
 
             setProducts(response.data);
         } catch (error) {
@@ -50,10 +104,13 @@ const ProductList = () => {
             </h1>
 
             <div className="overflow-x-auto overflow-hidden p-4 bg-white rounded-xl shadow-lg">
-
+                {/* <ProductFilter
+                    filter={filter}
+                    setFilter={setFilter}
+                /> */}
                 <table className="min-w-full">
 
-                    <thead className="bg-blue-600 text-white">
+                    <thead className="bg-blue-600  text-white">
 
                         <tr>
                             <th className="p-4">Sr.No</th>
@@ -73,7 +130,7 @@ const ProductList = () => {
                     <tbody className="text-center">
 
                         {products.length > 0 ? (
-                            products.map((item) => (
+                            filteredProducts.map((item) => (
                                 <tr
                                     key={item.productId}
                                     className="border-b hover:bg-gray-100"
@@ -137,16 +194,16 @@ const ProductList = () => {
 
             </div>
 
-           {open && selectedProduct && (
-            <EditProductModal
-                product={selectedProduct}
-                open={open}
-                setOpen={setOpen}
-                getProducts={getProducts}
-            />
-        )}
+            {open && selectedProduct && (
+                <EditProductModal
+                    product={selectedProduct}
+                    open={open}
+                    setOpen={setOpen}
+                    getProducts={getProducts}
+                />
+            )}
         </div>
-       
+
     );
 };
 

@@ -18,7 +18,15 @@ const PageNotFound = lazy(() => import('./PageNotFound'))
 
 
 function App() {
-
+// public/images/bride-placeholder.jpg
+// public/images/groom-placeholder.jpg
+// public/images/gallery/gallery-1.jpg
+// public/images/gallery/gallery-2.jpg
+// public/images/gallery/gallery-3.jpg
+// public/images/gallery/gallery-4.jpg
+// public/images/gallery/gallery-5.jpg
+// public/images/gallery/gallery-6.jpg
+// public/music/wedding-music.mp3
   return (
     //<div className="bg-linear-to-br from-blue-100 via-white to-indigo-100">
     <div>

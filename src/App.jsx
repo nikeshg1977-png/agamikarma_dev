@@ -27,6 +27,7 @@ function App() {
 // public/images/gallery/gallery-5.jpg
 // public/images/gallery/gallery-6.jpg
 // public/music/wedding-music.mp3
+ const [started, setStarted] = useState(false);
   return (
     //<div className="bg-linear-to-br from-blue-100 via-white to-indigo-100">
     <div>

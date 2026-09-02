@@ -13,7 +13,7 @@ export function FinalSection() {
 
  <div className="mt-8">
  <p className="font-display text-xl text-[#741d31]">
- {weddingData.brideName.split(" ")[0]} & {weddingData.groomName.split(" ")[0]}
+ {weddingData.brideName.split(" ")[0]} ❤️ {weddingData.groomName.split(" ")[0]}
  </p>
  <p className="mt-2 text-sm uppercase tracking-[0.15em] text-[#8a2437]">
  {weddingData.weddingDateLabel}

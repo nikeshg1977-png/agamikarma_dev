@@ -29,7 +29,7 @@ export function StickyNav() {
  type="button"
  onClick={() => navigate("home")}
  >
- N <span className="text-[#c8a253]">&</span> N
+ N <span className="text-[#c8a253]">❤️</span> N
  </button>
 
  <div className="hidden items-center gap-5 lg:flex">
